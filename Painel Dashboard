@@ -1,0 +1,282 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.wrap{font-family:var(--font-sans);color:var(--color-text-primary)}
+.hero{padding:2.5rem 2rem 2rem;text-align:center;border-bottom:0.5px solid var(--color-border-tertiary);position:relative;overflow:hidden}
+.hero-eye{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:.45rem}
+.hero-title{font-size:27px;font-weight:500;line-height:1.2;color:var(--color-text-primary)}
+.hero-sub{font-size:13px;color:var(--color-text-secondary);margin-top:.55rem;line-height:1.6}
+.params{display:flex;justify-content:center;gap:24px;margin-top:1rem;flex-wrap:wrap}
+.param-chip{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:99px;padding:.3rem .85rem;font-size:12px;color:var(--color-text-secondary)}
+.param-chip b{color:var(--color-text-primary);font-weight:500}
+.sec{padding:1.75rem 1.5rem}
+.sec-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sec-lbl::after{content:'';flex:1;height:0.5px;background:var(--color-border-tertiary)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:1.75rem}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;position:relative}
+.kpi-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:.3rem}
+.kpi-val{font-size:23px;font-weight:500;line-height:1;color:var(--color-text-primary)}
+.kpi-sub{font-size:11px;color:var(--color-text-secondary);margin-top:.3rem}
+.badge{position:absolute;top:.6rem;right:.6rem;font-size:10px;padding:2px 8px;border-radius:99px;font-weight:500}
+.bg{background:#EAF3DE;color:#3B6D11}.bw{background:#FAEEDA;color:#854F0B}.bb{background:#E6F1FB;color:#185FA5}.br{background:#FAECE7;color:#993C1D}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:1.75rem}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.1rem}
+.card-title{font-size:13px;font-weight:500;margin-bottom:.15rem}
+.card-sub{font-size:11px;color:var(--color-text-secondary);margin-bottom:.75rem}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:.7rem;font-size:11px;color:var(--color-text-secondary)}
+.ld{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:3px}
+.full-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.1rem 1.25rem;margin-bottom:1.75rem}
+.ic-wrap{margin:.5rem 0}
+.ic-track{position:relative;height:26px;background:#E6F1FB;border-radius:6px;display:flex;align-items:center}
+.ic-txt{position:absolute;font-size:10px;color:#185FA5;font-weight:500}
+.ic-pin{position:absolute;top:-5px;width:2.5px;height:36px;border-radius:1px}
+.ic-lgnd{display:flex;gap:18px;margin-top:6px;font-size:11px;color:var(--color-text-secondary)}
+.ic-lgnd-dot{width:12px;height:3px;border-radius:1px;display:inline-block;margin-right:4px;vertical-align:middle}
+.findings{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.75rem}
+.finding{border-radius:var(--border-radius-md);padding:.85rem 1rem;border-left:3px solid}
+.fg{background:#EAF3DE;border-color:#639922}.fa{background:#FAEEDA;border-color:#BA7517}.fb{background:#E6F1FB;border-color:#378ADD}.fc{background:#FAECE7;border-color:#D85A30}
+.ft{font-size:12px;font-weight:500;margin-bottom:.25rem}.fb{background:#E6F1FB;border-color:#378ADD}
+.fg .ft{color:#3B6D11}.fa .ft{color:#854F0B}.fb .ft{color:#185FA5}.fc .ft{color:#993C1D}
+.fb2{font-size:11px;line-height:1.5}.fg .fb2{color:#3B6D11}.fa .fb2{color:#854F0B}.fb .fb2{color:#185FA5}.fc .fb2{color:#993C1D}
+.flow{display:flex;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:.5rem}
+.step{flex:1;padding:.7rem .4rem;text-align:center;border-right:0.5px solid var(--color-border-tertiary)}
+.step:last-child{border-right:none}
+.step-n{font-size:17px;font-weight:500}
+.step-l{font-size:10px;color:var(--color-text-secondary);margin-top:.15rem;line-height:1.3}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Painel de análise estatística de brilho estelar com μ=15,5 mag e σ=0,8 mag. 1.000 observações, 17 outliers detectados, teste t não rejeita H₀.</h2>
+
+<div class="hero">
+  <div class="hero-eye">Pós-Graduação em Ciência de Dados · Estatística Aplicada à Astronomia</div>
+  <div class="hero-title">Calibração de Brilho em Estrelas Variáveis</div>
+  <div class="hero-sub">Análise completa de 1.000 observações simuladas com inferência estatística e diagnóstico de anomalias</div>
+  <div class="params">
+    <div class="param-chip"><b>μ teórico</b> = 15,500 mag</div>
+    <div class="param-chip"><b>σ ruído</b> = 0,800 mag</div>
+    <div class="param-chip"><b>n</b> = 1.000 obs.</div>
+    <div class="param-chip"><b>seed</b> = 42</div>
+    <div class="param-chip"><b>outliers injetados</b> = 20</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Indicadores-chave da amostra</div>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="badge bb">IC 95%</span><div class="kpi-lbl">Média amostral</div><div class="kpi-val">15,471</div><div class="kpi-sub">mag · μ teórico = 15,500</div></div>
+    <div class="kpi"><span class="badge bw">Inflado</span><div class="kpi-lbl">Desvio padrão</div><div class="kpi-val">0,847</div><div class="kpi-sub">mag · σ teórico = 0,800</div></div>
+    <div class="kpi"><span class="badge bg">Aprovado</span><div class="kpi-lbl">p-valor (t-test)</div><div class="kpi-val">0,285</div><div class="kpi-sub">Não rejeita H₀ (α = 0,05)</div></div>
+    <div class="kpi"><span class="badge bw">Detectado</span><div class="kpi-lbl">Outliers Tukey</div><div class="kpi-val">17</div><div class="kpi-sub">1,7 % das obs · injetados: 20</div></div>
+    <div class="kpi"><span class="badge bb">IC 95%</span><div class="kpi-lbl">Limite inferior</div><div class="kpi-val">15,419</div><div class="kpi-sub">mag · intervalo de confiança</div></div>
+    <div class="kpi"><span class="badge bb">IC 95%</span><div class="kpi-lbl">Limite superior</div><div class="kpi-val">15,524</div><div class="kpi-sub">mag · μ teórico está dentro</div></div>
+  </div>
+
+  <div class="sec-lbl">Intervalo de confiança 95% — posição do μ teórico na distribuição amostral</div>
+  <div class="full-card">
+    <div class="ic-wrap">
+      <div class="ic-track">
+        <span class="ic-txt" style="left:1%">15,419</span>
+        <span class="ic-txt" style="left:50%;transform:translateX(-50%);font-size:11px">← IC 95% →</span>
+        <span class="ic-txt" style="right:1%">15,524</span>
+        <div class="ic-pin" style="left:38%;background:#378ADD" title="Média amostral 15,471"></div>
+        <div class="ic-pin" style="left:62%;background:#D85A30" title="μ teórico 15,500"></div>
+      </div>
+      <div class="ic-lgnd">
+        <span><span class="ic-lgnd-dot" style="background:#378ADD"></span>Média amostral (15,471 mag)</span>
+        <span><span class="ic-lgnd-dot" style="background:#D85A30"></span>μ teórico (15,500 mag) — dentro do IC ✓</span>
+        <span><span class="ic-lgnd-dot" style="background:#E6F1FB;border:1px solid #B5D4F4"></span>Intervalo de confiança 95%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Distribuição das medições e detecção de anomalias</div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Histograma de brilho</div>
+      <div class="card-sub">Frequência das 1.000 leituras de magnitude aparente</div>
+      <div class="legend">
+        <span><span class="ld" style="background:rgba(55,138,221,0.7)"></span>Densidade amostral</span>
+        <span><span class="ld" style="background:#D85A30"></span>Curva Normal teórica</span>
+        <span><span class="ld" style="background:#2ECC71;border-radius:0"></span>Média amostral</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="histC" role="img" aria-label="Histograma das 1000 magnitudes aparentes com curva normal teórica sobreposta. Distribuição centrada em aproximadamente 15,5 mag.">Distribuição aproximadamente normal centrada em 15,5 mag com outliers nas caudas.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Diagnóstico de outliers</div>
+      <div class="card-sub">Regra de Tukey: limites Q1−1,5·IQR e Q3+1,5·IQR</div>
+      <div class="legend">
+        <span><span class="ld" style="background:rgba(55,138,221,0.5)"></span>Normal (98,3%)</span>
+        <span><span class="ld" style="background:#D85A30"></span>Outlier (1,7%)</span>
+        <span><span class="ld" style="background:#BA7517;border-radius:0;height:3px;width:14px"></span>Limites Tukey</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="scatC" role="img" aria-label="Gráfico de pontos mostrando 983 leituras normais em azul e 17 outliers em vermelho.">983 leituras normais e 17 outliers detectados pela regra de Tukey.</canvas></div>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <div class="card-title" style="margin-bottom:.15rem">Impacto dos outliers na precisão da estimativa</div>
+    <div class="card-sub" style="margin-bottom:.8rem">Remoção dos 17 pontos anômalos reduz o desvio padrão em 8,2% e estreita o intervalo de confiança</div>
+    <div style="position:relative;height:155px"><canvas id="cmpC" role="img" aria-label="Barras comparando desvio padrão, erro padrão e viés absoluto com e sem outliers.">DP com outliers: 0,847; sem: 0,778. Erro padrão com: 0,0268; sem: 0,0246.</canvas></div>
+  </div>
+
+  <div class="sec-lbl">Teste de hipótese — resumo visual</div>
+  <div class="full-card" style="margin-bottom:1.75rem">
+    <div class="card-title" style="margin-bottom:.15rem">Distribuição t de Student e região de rejeição (α = 5%)</div>
+    <div class="card-sub" style="margin-bottom:.8rem">t = −1,070 · p = 0,285 · graus de liberdade = 999 · decisão: não rejeitar H₀</div>
+    <div style="position:relative;height:160px"><canvas id="tC" role="img" aria-label="Curva t de Student com região de rejeição sombreada em vermelho nas caudas e valor t observado marcado em azul.">Curva t com região de rejeição bilateral. t observado dentro da zona de não rejeição.</canvas></div>
+  </div>
+
+  <div class="sec-lbl">Conclusões da análise</div>
+  <div class="findings">
+    <div class="finding fg"><div class="ft">Telescópio bem calibrado</div><div class="fb2">O μ teórico (15,500) permanece dentro do IC 95% [15,419; 15,524]. O t-test não rejeita H₀ com p = 0,285, confirmando a calibração correta do instrumento.</div></div>
+    <div class="finding fa"><div class="ft">Ruído ligeiramente acima do esperado</div><div class="fb2">σ amostral (0,847) supera o teórico (0,800) em 5,9%. Com os 17 outliers removidos o DP cai para 0,778, abaixo do σ de projeto.</div></div>
+    <div class="finding fb"><div class="ft">Remoção de outliers melhora precisão</div><div class="fb2">Sem os 17 pontos anômalos o IC 95% estreita para [15,414; 15,512]. O erro padrão cai de 0,0268 → 0,0246, ganhando ~8% de precisão.</div></div>
+    <div class="finding fc"><div class="ft">17 falhas instrumentais identificadas</div><div class="fb2">Limites de Tukey: [13,298; 17,671] mag. 3 outliers injetados não foram detectados (caíram dentro dos limites), indicando falhas leves.</div></div>
+  </div>
+
+  <div class="sec-lbl">Fluxo da análise estatística</div>
+  <div class="flow">
+    <div class="step"><div class="step-n">1.000</div><div class="step-l">observações via rnorm()</div></div>
+    <div class="step"><div class="step-n">20</div><div class="step-l">falhas injetadas artificialmente</div></div>
+    <div class="step"><div class="step-n">17</div><div class="step-l">outliers detectados por Tukey</div></div>
+    <div class="step"><div class="step-n">95%</div><div class="step-l">intervalo de confiança via t de Student</div></div>
+    <div class="step"><div class="step-n">0,285</div><div class="step-l">p-valor · H₀ não rejeitada</div></div>
+  </div>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const tc = isDark ? '#aaa' : '#666';
+const gc = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+
+// --- real data from R -------------------------------------------------------
+const MIDS = [11.9052,12.0698,12.2345,12.3991,12.5638,12.7284,12.8931,13.0577,13.2224,13.387,13.5517,13.7163,13.881,14.0457,14.2103,14.375,14.5396,14.7043,14.8689,15.0336,15.1982,15.3629,15.5275,15.6922,15.8568,16.0215,16.1861,16.3508,16.5155,16.6801,16.8448,17.0094,17.1741,17.3387,17.5034,17.668,17.8327,17.9973,18.162,18.3266];
+const DENS = [0,0,0,0,0,0.00607,0.01215,0.01822,0,0.02429,0.03037,0.06073,0.07895,0.0911,0.14576,0.15791,0.29759,0.29759,0.32796,0.3887,0.49194,0.49802,0.54053,0.48587,0.35833,0.4555,0.30974,0.21257,0.26115,0.21864,0.07895,0.06073,0.04859,0.02429,0.01215,0.01822,0.01215,0.00607,0.00607,0.03037];
+const THEOR = [0.00002,0.00005,0.00012,0.00027,0.00059,0.00123,0.00247,0.00472,0.00866,0.01524,0.0257,0.04153,0.06434,0.09554,0.13598,0.18551,0.24259,0.30408,0.36534,0.42073,0.46443,0.49141,0.49838,0.48449,0.45146,0.40322,0.34521,0.28328,0.22282,0.168,0.12141,0.0841,0.05584,0.03554,0.02168,0.01268,0.00711,0.00382,0.00197,0.00097];
+const OBS_RAW = [16.59677,15.04824,15.7905,13.53993,15.82341,15.4151,16.70922,15.42427,17.11474,15.44983,16.5439,17.32932,14.38891,15.27697,15.39334,16.00876,15.2726,13.37484,13.54763,16.55609,15.25469,14.07495,15.36247,16.47174,17.01615,15.15562,15.29418,14.08947,15.86808,14.988,15.86436,16.06387,16.32808,15.01286,15.90396,14.12639,14.87243,14.81927,13.56863,15.5289,15.6648,15.21115,16.10653,14.91864,14.40538,15.84625,14.85089,16.65528,15.15484,16.02452,15.75754,14.87293,16.76058,16.01432,15.57181,15.72124,16.04343,15.57187,13.10553,15.72791,15.20621,15.64818,15.96546,16.61979,14.91817,18.37037,15.76868,16.3308,16.23658,16.0767,14.6655,15.42785,15.99881,14.73718,15.06574,15.9648,16.11454,15.87101,14.79138,14.62018,16.71017,15.70634,15.57075,15.40328,14.54454,15.9896,15.32629,15.35379,16.24668,18.39696,16.61369,15.11906,16.02028,16.61289,14.61137,14.81137,14.59461,14.33263,15.56399,16.02256,16.46077,16.3358,14.69743,16.97879,14.96658,15.58441,15.1622,15.40212,15.65055,15.59533,15.47993,17.78712,15.11165,15.09663,14.17112,15.19413,15.08988,17.66151,14.41031,15.6098,14.3051,14.32365,15.59976,14.70269,15.49854,15.15739,15.00906,13.88026,14.5202,15.64361,15.9541,15.1057,15.50005,16.39831,16.65188,14.62231,15.40614,16.4612,15.12422,15.45802,15.43111,14.78986,15.14425,15.47644,15.1689,16.39071,15.11521,15.15346,16.05749,14.65491,15.46744,14.25876,16.43374,15.28108,15.12572,14.5094,15.49379,14.85977,15.07321,16.53014,15.35958,14.64257,15.63057,15.20981,15.97201,16.64594,14.70585,15.86372,15.56792,16.21645,15.31618,16.1693,14.10396,16.85157,16.19182,15.37938,14.34079,16.01441,15.88656,15.49492,15.62116,15.03271,15.79505,15.73572,15.27659,14.43101,16.0606,15.94336,14.83095,14.22433,15.66397,15.22393,15.70209,14.4648,14.73266,16.36862,15.82302,15.96919,16.95218,15.60306,13.89926,15.76702,16.43706,17.14763,12.9397,14.57932,14.93534,14.65676,14.98341,15.3517,14.53902,17.12958,15.58622,15.43271,15.8965,15.52993,15.39433,16.68143,15.32638,14.47312,15.80853,15.21879,16.85438,14.6455,15.84269,15.36079,15.91253,15.31251,14.9732,16.50019,15.28259,16.25836,14.53873,15.12711,15.28452,15.18723,16.57897,15.48179,15.69538,14.7461,14.91663,16.29846,16.50679,16.49909,14.39549,17.13997,16.3135,15.47863,16.06289,14.72289,14.62308,15.53924,14.5412,15.65202,16.53816,14.6729,14.90925,15.53725,14.68592,15.19337,16.1982,16.27564,15.80708,14.01876,15.4568,18.40897,16.15056,15.34735,13.34006,15.54877,15.959,15.53664,15.62593,15.84525,15.18276,16.54798,15.87631,14.50586,16.60526,16.46357,16.15926,14.1699,15.04455,13.96191,15.53498,15.77841,17.46767,14.8453,13.80944,15.71896,14.94992,15.85683,14.85009,17.26964,15.40104,15.11813,15.36699,16.19005,15.57787,14.19951,15.4963,16.10819,15.53119,16.08806,15.38282,15.45369,15.8859,16.29435,14.50288,15.47321,15.44323,14.89286,14.67251,14.99541,15.96945,15.16694,14.87209,15.63073,14.51063,16.3367,15.11232,15.6513,15.54081,15.49981,16.94751,14.83974,16.41638,15.52526,14.83184,15.44499,16.09742,15.15959,14.88233,15.62221,16.29088,15.44123,14.39038,14.45466,14.88528,15.07831,15.48286,16.0364,15.15231,14.6089,15.98568,15.72037,16.42588,14.15402,15.56986,16.58269,16.07934,14.83396,16.08602,14.80246,15.13728,16.45003,15.26788,16.16284,15.26702,14.23891,14.82095,14.62918,15.11257,15.23095,15.37731,15.3054,15.80124,14.3912,15.16814,15.77927,16.80275,15.57082,16.49132,14.18436,16.65709,14.94755,15.27886,14.61246,15.6071,16.92827,17.43773,14.63854,15.88875,16.61082,15.34347,15.32546,15.25618,15.97827,16.61794,16.0501,15.75615,15.2585,15.89868,15.06037,15.27659,14.1665,15.85361,15.69281,15.29551,16.24483,16.56793,14.80458,15.54439,15.53925,15.03732,14.70101,15.49805,16.02441,16.68147,13.97268,14.93805,16.66156,14.16947,14.89957,14.87812,14.92194,13.74893,15.67073,14.99446,16.71639,16.13676,14.33718,15.57872,15.02498,14.81259,15.54246,15.05438,15.85072,15.62209,15.36831,17.11591,15.07649,15.12337,14.26325,15.46758,16.21229,13.84289,15.29995,14.55468,16.65355,16.58632,15.7676,16.64347,14.80615,16.26052,15.03199,15.75677,15.26048,15.27717,15.93689,14.45694,15.29927,15.63681,15.17723,15.58373,15.2449,16.79468,16.07135,17.87269,14.86394,16.15149,17.17842,15.74078,14.63354,14.69494,15.47167,16.5473,16.10032,13.78931,14.93972,15.49275,14.33349,16.05562,13.53093,15.61463,15.18702,15.10707,15.27308,15.75184,15.81706,15.31952,13.96004,14.34862,14.32427,16.10949,15.30511,15.71574,14.25286,15.07153,15.94996,15.35734,15.40789,15.44235,16.46873,15.00808,16.0409,16.21888,14.54855,15.59701,15.49102,16.32331,16.23182,15.49803,13.61109,14.92388,15.3415,14.67663,14.72644,14.52335,16.16897,16.39198,15.16964,14.59682,15.42965,17.29352,17.13305,14.12416,15.21447,16.72662,15.4694,16.77793,15.23313,15.98399,15.67939,18.08326,16.23636,14.53477,15.0169,15.79619,13.9792,14.05647,14.60254,15.22166,16.49112,15.28064,15.6299,15.44831,14.93581,16.58976,14.62279,15.31725,15.22174,15.9257,16.78579,15.91105,16.6059,16.11048,15.00033,15.56524,16.60086,14.25099,15.75982,15.37457,16.20223,16.10013,15.74084,16.69425,14.2796,16.22857,14.23637,15.97017,15.57171,16.27381,15.56305,14.24504,13.89374,15.93278,15.4413,15.04319,15.25115,14.96287,15.37413,14.75496,13.91359,15.32432,16.33622,17.00186,15.50208,15.43546,16.27039,15.54286,15.15208,14.11016,14.48904,15.82505,14.33228,16.33877,14.42286,15.34514,15.49813,15.48974,15.62156,15.97881,15.39903,15.30117,15.62826,15.15309,16.72993,13.7638,16.3216,15.30121,15.83786,16.29012,16.16845,14.97158,16.75126,14.20162,16.19112,15.09072,13.96611,14.00735,15.69614,17.27883,15.7187,16.40463,16.17094,14.97631,16.26317,15.78236,15.66528,18.39867,16.09796,14.99874,15.81618,14.78627,16.00465,15.15384,15.86171,15.7944,15.28369,15.87241,15.95948,15.31544,16.43779,16.61416,14.97041,14.8781,15.91083,14.76935,15.14046,16.14235,15.04122,13.9575,16.03151,14.21797,14.41632,13.08565,16.16499,15.70088,15.86983,16.17583,15.46642,14.61554,15.95102,16.54269,14.29982,15.01441,15.2662,14.46825,16.05528,15.02065,16.50553,15.54281,16.08247,16.74888,15.7125,16.36138,15.66856,14.29066,15.51792,16.07451,15.89157,15.36089,14.52584,16.01712,14.76684,14.49854,15.97594,14.51375,15.69549,15.50222,14.43743,16.44376,15.02576,16.45998,15.11997,15.03995,13.40627,15.21355,15.21472,14.79787,14.52968,15.99063,14.85504,14.39883,15.09372,14.85925,13.74577,15.26725,15.63374,15.73575,15.81419,14.69933,15.23942,16.07548,14.99165,14.53213,14.60683,16.0039,15.28198,15.29293,16.88365,15.45329,15.07035,16.09783,15.11019,16.59833,15.19786,15.00708,14.5655,15.76291,16.67321,15.21519,15.70917,15.76666,16.63775,16.0311,14.64108,14.94248,14.9031,15.61326,15.49684,15.79435,14.97413,15.19892,16.09309,15.42031,14.97657,16.27693,15.5108,14.76677,16.86775,14.56552,14.07517,13.69749,16.0209,15.07373,15.27955,15.7317,15.12681,14.21355,13.94017,15.22744,15.63978,13.67778,15.73242,15.83785,16.53579,15.63177,15.66396,15.98368,15.48469,15.43623,15.59279,16.09534,15.15497,15.10038,14.80787,14.73379,15.76144,16.7379,14.72491,15.34925,14.676,16.22647,15.24609,15.6432,15.77842,14.65658,15.4162,15.31733,16.04028,14.5134,14.54003,16.11269,15.02952,14.97176,15.59041,15.24368,16.99311,15.70763,15.62925,16.24486,15.45204,15.53899,14.6417,13.66562,14.53423,15.59129,14.67336,16.05105,16.08007,15.6739,15.33867,14.40745,15.25285,15.13768,16.03058,16.5469,15.90083,14.59737,16.8368,14.12389,15.67882,13.73481,14.73633,15.44514,16.10904,14.55608,18.06896,13.45694,15.31125,15.29235,14.96931,15.24481,16.09392,14.80057,13.83375,15.57501,15.49854,15.48952,16.03437,15.48947,16.12084,13.89141,14.59746,15.77904,15.21768,16.25582,14.69622,16.07912,14.96493,14.60957,15.22576,15.53982,14.51785,14.8888,14.50305,16.31342,16.07889,14.67398,15.94588,15.29553,14.60929,15.83696,15.24164,16.20414,15.34411,16.45044,15.09219,15.67564,15.79624,15.72329,15.66155,15.4896,15.42731,16.59203,16.2265,15.01209,16.61715,15.61584,14.98751,15.63584,15.37425,15.58075,14.72128,14.84414,16.59034,16.2691,14.79302,14.77993,16.87867,17.02723,14.87829,14.45816,17.5988,15.6837,15.6494,15.56091,16.62389,15.34662,16.66751,15.32348,15.90412,14.6732,15.63638,16.46053,15.36928,16.52598,17.68176,16.25354,15.30111,15.57718,15.15286,17.24293,13.13298,15.56471,15.58811,15.67076,14.25374,15.67297,15.65013,16.5069,15.91881,16.39236,14.734,15.40048,15.65339,15.71777,14.94495,16.68334,15.01059,11.82283,15.82199,16.03164,16.2553,14.74299,15.30137,14.43725,16.17581,15.77816,16.23101,15.98662,15.01396,15.64373,13.97327,15.90236,16.27512,14.79941,13.79118,14.28174,14.60951,16.49279,15.50279,14.50976,15.94456,13.75348,15.30238,16.39029,15.22666,16.54435,16.93626,14.56573,14.57817,14.76844,15.92298,16.16806,16.46731,16.53958,16.36059,16.25184,15.6307,12.83825,14.91907,15.82608,16.84683,15.25953,13.95907,14.8328,16.63531,14.64871,14.20914,15.97985,16.88637,17.0476,15.92626,16.07573,15.94807,15.48553,12.80261,16.10856,15.18702,16.30792,14.99842,14.19234,16.49619,15.6451,18.29624,16.23247,16.33881,16.11106,15.01729,15.20366,16.34786,16.34409,15.96638,14.71075,16.8477,14.40653,15.15343];
+const IS_OUT = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0];
+const LIM_INF = 13.2977, LIM_SUP = 17.6705;
+const MU = 15.5, MU_SAMP = 15.471343;
+
+// --- histogram ---------------------------------------------------------------
+new Chart(document.getElementById('histC'),{
+  type:'bar',
+  data:{
+    labels: MIDS.map(v=>v.toFixed(2)),
+    datasets:[
+      {label:'Densidade amostral', data: DENS, backgroundColor:'rgba(55,138,221,0.65)', borderColor:'rgba(55,138,221,0.9)', borderWidth:0.5, order:2},
+      {label:'Normal teórica', data: THEOR, type:'line', borderColor:'#D85A30', borderWidth:2, pointRadius:0, fill:false, order:1, tension:.4},
+      {label:'Média amostral', data: MIDS.map(()=>null), borderColor:'#2ECC71', borderWidth:2, type:'line', pointRadius:0, fill:false, order:0}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}, tooltip:{callbacks:{title:l=>'~'+l[0].label+' mag', label:c=>c.dataset.label+': '+c.parsed.y.toFixed(4)}}},
+    scales:{
+      x:{ticks:{maxTicksLimit:8, color:tc, font:{size:10}}, grid:{color:gc}, border:{display:false}},
+      y:{ticks:{color:tc, font:{size:10}}, grid:{color:gc}, border:{display:false}, title:{display:true, text:'Densidade', color:tc, font:{size:10}}}
+    },
+    plugins:{
+      legend:{display:false},
+      annotation:{annotations:{
+        muSamp:{type:'line', scaleID:'x', value: MIDS.findIndex(v=>v>=MU_SAMP).toString(), borderColor:'#2ECC71', borderWidth:2, borderDash:[5,3]}
+      }}
+    }
+  }
+});
+
+// --- scatter outliers -------------------------------------------------------
+const normalPts = [], outPts = [];
+OBS_RAW.forEach((y,i) => {
+  const x = (Math.random()-0.5)*1.6;
+  if(IS_OUT[i]) outPts.push({x, y});
+  else normalPts.push({x, y});
+});
+
+new Chart(document.getElementById('scatC'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Normal', data: normalPts, backgroundColor:'rgba(55,138,221,0.35)', pointRadius:1.8, pointHoverRadius:3},
+    {label:'Outlier', data: outPts, backgroundColor:'rgba(216,90,48,0.9)', pointRadius:4, pointHoverRadius:6, pointStyle:'triangle'},
+    {label:'Lim Inf', data:[{x:-1,y:LIM_INF},{x:1,y:LIM_INF}], type:'line', borderColor:'rgba(186,117,23,0.8)', borderWidth:1.5, borderDash:[5,3], pointRadius:0, fill:false},
+    {label:'Lim Sup', data:[{x:-1,y:LIM_SUP},{x:1,y:LIM_SUP}], type:'line', borderColor:'rgba(186,117,23,0.8)', borderWidth:1.5, borderDash:[5,3], pointRadius:0, fill:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}, tooltip:{filter:i=>i.datasetIndex<=1, callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toFixed(3)+' mag'}}},
+    scales:{
+      x:{display:false, min:-1.2, max:1.2},
+      y:{ticks:{color:tc, font:{size:10}}, grid:{color:gc}, border:{display:false}, title:{display:true, text:'Magnitude (mag)', color:tc, font:{size:10}}}
+    }
+  }
+});
+
+// --- compare bars -----------------------------------------------------------
+new Chart(document.getElementById('cmpC'),{
+  type:'bar',
+  data:{
+    labels:['Desvio padrão (mag)','Erro padrão × 10 (mag)','|Viés vs μ| × 10 (mag)'],
+    datasets:[
+      {label:'Com outliers (n=1000)', data:[0.84675, 0.26777, 0.28657], backgroundColor:'rgba(216,90,48,0.72)', borderRadius:4},
+      {label:'Sem outliers (n=983)', data:[0.77771, 0.24591, 0.36877], backgroundColor:'rgba(55,138,221,0.72)', borderRadius:4}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    indexAxis:'y',
+    plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.x.toFixed(5)}}},
+    scales:{
+      x:{ticks:{color:tc, font:{size:10}}, grid:{color:gc}, border:{display:false}},
+      y:{ticks:{color:tc, font:{size:11}}, grid:{display:false}, border:{display:false}}
+    }
+  }
+});
+
+// --- t distribution ---------------------------------------------------------
+(function(){
+  const df=999, pts=200;
+  function tPDF(t,df){
+    const B = Math.exp((df/2)*Math.log(df/2)-Math.lgamma(df/2)+(((df+1)/2)-1)*Math.log(1+(t*t)/df)-(df+1)/2*Math.log(1+(t*t)/df));
+    // simpler approximation
+    const a = Math.exp(Math.lgamma((df+1)/2)-Math.lgamma(df/2)-0.5*Math.log(Math.PI*df));
+    return a * Math.pow(1 + t*t/df, -(df+1)/2);
+  }
+  if(!Math.lgamma) Math.lgamma = x => { const g=7,c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.3234287776531,-176.6150291621406,12.507343278686905,-0.13857109526572012,9.984369578019572e-6,1.5056327351493116e-7]; let t=x+g-0.5,s=c[0]; for(let i=1;i<g+2;i++) s+=c[i]/(x+i-1); return 0.5*Math.log(2*Math.PI)+(x-0.5)*Math.log(t)-t+Math.log(s); };
+
+  const xs=[], yFull=[], yRej=[];
+  const tCrit=1.9623, tObs=-1.0702;
+  for(let i=0;i<=pts;i++){
+    const t = -4 + 8*i/pts;
+    xs.push(t.toFixed(3));
+    const p = tPDF(t,df);
+    yFull.push(p);
+    yRej.push((t<-tCrit||t>tCrit)?p:null);
+  }
+  const tObsIdx = Math.round((tObs+4)/8*pts);
+
+  new Chart(document.getElementById('tC'),{
+    type:'line',
+    data:{
+      labels: xs,
+      datasets:[
+        {label:'Curva t(999)', data:yFull, borderColor:'#378ADD', borderWidth:2, pointRadius:0, fill:true, backgroundColor:'rgba(55,138,221,0.08)', tension:.4},
+        {label:'Região de rejeição', data:yRej, borderColor:'transparent', pointRadius:0, fill:true, backgroundColor:'rgba(216,90,48,0.35)', tension:.4},
+        {label:'t observado', data:xs.map((_,i)=>i===tObsIdx?yFull[tObsIdx]:null), pointRadius:7, pointBackgroundColor:'#378ADD', showLine:false}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label}}},
+      scales:{
+        x:{ticks:{maxTicksLimit:9, color:tc, font:{size:10}}, grid:{color:gc}, border:{display:false}, title:{display:true, text:'Estatística t', color:tc, font:{size:10}}},
+        y:{display:false}
+      }
+    }
+  });
+})();
+</script>
