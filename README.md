@@ -7,7 +7,7 @@ Em astronomia, a medição do brilho de astros (magnitude aparente) é frequente
 
 *O Problema: O objetivo é simular um conjunto de 1.000 observações de brilho para esta estrela, realizar uma análise de inferência para estimar se a média observada condiz com o valor teórico esperado e identificar possíveis anomalias nos dados captados.
 
-#Conclusão dos resultados obtidos:
+Conclusão dos resultados obtidos:
 ======================================================
  SIMULAÇÃO DE BRILHO — ESTRELA VARIÁVEL
 ======================================================
