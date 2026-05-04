@@ -9,14 +9,14 @@ Em astronomia, a medição do brilho de astros (magnitude aparente) é frequente
 
 Conclusão dos resultados obtidos:
 ======================================================
- SIMULAÇÃO DE BRILHO — ESTRELA VARIÁVEL
+SIMULAÇÃO DE BRILHO — ESTRELA VARIÁVEL
 ======================================================
    μ teórico  : 15.5000 mag
    σ ruído    : 0.8000 mag
    N observ.  : 1000
    Outliers   : 20 injetados (2.0%)
 ======================================================
- ESTATÍSTICAS DESCRITIVAS
+ESTATÍSTICAS DESCRITIVAS
 ======================================================
    Média amostral  : 15.4713 mag
    Mediana         : 15.4823 mag
